@@ -139,6 +139,34 @@ process.stdin.on('data', function(data){
 
 The above also illustrates the use of events and event handlers.
 
+# Vanilla Javascript
+
+Node is Javascript. The following demonstrates how `setInterval` and `setTimeout` behave in the exactly the same way as their browser equivalents.
+
+```
+var endTime = 3000;
+var currentTime = 0;
+var waitInterval = 1000;
+var repeatInterval = 500;
+console.log("Wait for it");
+var myIntVal = setInterval(function(){ 
+  currentTime += waitInterval;
+  console.log(`waiting ${currentTime/1000} seconds ....`);
+  }, repeatInterval); 
+setTimeout(function(){ 
+   clearInterval(myIntVal);
+   console.log("Over and Out");
+   }, endTime);
+```
+
+# ES6
+
+As Node is based on Google's V8 Javascript engine ES6 support is baked in. So we can use ES6 features like template strings with its use of back ticks ` and ${} variables.
+
+```
+var myArray = ['Bob','Fred','Jane','Helen'];
+console.log(`Hello ${myArray[0]}, how are you?`);
+
 
 
 
