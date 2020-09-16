@@ -166,6 +166,7 @@ As Node is based on Google's V8 Javascript engine ES6 support is baked in. So we
 ```
 var myArray = ['Bob','Fred','Jane','Helen'];
 console.log(`Hello ${myArray[0]}, how are you?`);
+```
 
 # Module, export and require
 
@@ -379,11 +380,7 @@ The `writeHead()` method of the response object can be used to write the http he
 
 The first parameter in the `writeHead()` method is the code for the http response - when successful you'd want this to be a 200.
 
-|||info
-
-The 200 here is a http response code.  You'll be most familar  with the 404 'File Not Found' response code.
-
-|||
+> The 200 here is a http response code.  You'll be most familar  with the 404 'File Not Found' response code.
 
 The second parameter for `writeHead()` method is a list of options related to the header such as the content type.
 
@@ -416,14 +413,12 @@ server.listen(3000);
 console.log("Server running on Port 3000");
 ```
 
-The above tells the server to listen to requests to on port 3000.  Codeio is set up for that, so you can test this page by:
+The above tells the server to listen to requests to on port 3000.
 
 1. Running the node file as in previous examples via `node myServer`
 1. Previewing the file thorough the Box URL drop-down
 
-|||info
-Note: As you edit and experiment with this server file you will need to `Ctrl>C` to exit the server and then restart it.
-|||
+> Note: As you edit and experiment with this server file you will need to `Ctrl>C` to exit the server and then restart it.
 
 Data can also be written to the response object's `write()` method if preferred leaving the `end()` method empty.
 
@@ -461,8 +456,6 @@ res.end(` <html>
 server.listen(3000);
 console.log("Server running on Port 3000");
 ```
-
-Use the Box URL of `siteaddress/test` and the browser will display a `req.url` value of `test`.
 
 As such we could set up the code to response with different HTML based on a different request:
 
