@@ -1,27 +1,38 @@
 # Creating NodeJS and/or Web programs in Codio
 
-### Make a new file
-Use **File > New File...** or right-click in the file tree to create a new file. You can right-click in the file tree to rename or delete files.
+# Check Node is Running
 
-As Codio detects which file is in focus, simply put your cursor into whichever code editor you want to preview and use the "Preview Current File".
+This Codio Project is already set up with NodeJS running.  To test Node open a New Terminal and type the following:
 
-### View site or Current file
-Use the Preview button (with the "play" icon) to see a preview of the website.
+``` 
+node -v 
+```
 
-![](https://global.codio.com/platform/readme.resources/PreviewMenuWeb.png)
+The current version of NodeJS installed should then appear eg:
 
-Use the drop-down arrow to the right of the "Preview Website" option to change the button to view the current file. You can also configure your preview button to open the preview as a new tab inside Codio, or as a new tab in your browser.
+```
+v10.21.0
+```
 
-### Running Node
-Use the Run button (with the "rocketship" icon) to start the current NodeJS file. To stop node, press ctrl + c in the terminal.
+# Node Command Prompt
 
-### Debug your Code
-Use the "Debug Current NodeJS File" on the far right of the top menu bar to launch the debugger targeting the NodeJS file your cursor is in.
+In the terminal window enter the Node command line by typing:
 
-Use your browser's built in Developer Tools to debug other web projects such as HTML/CSS.
+```
+node
+```
 
-### Reconfigure your Panels for easier development
-Use the **View > Panels** menu on the top tool bar to segment your screen.
+The ```>``` prompt should indicate you are in the Node Command Prompt.
 
-Simply drag the tab of the file or terminal (the part with the name) you want to move into the new panel.
+Once in the Node command line Javascript commands such as `console` can be used.  `console` is allows messages to output and is useful for basic debugging.  Make sure you are still in the Node Command Prompt and type:
+
+```
+>console.info('Hello command line')
+```
+
+.. and your message should appear.
+
+|||info
+
+Note: There is a second undefined because `console.info()` doesn't return a value. This has no impact in this situation.
 
