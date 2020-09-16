@@ -32,7 +32,50 @@ Once in the Node command line Javascript commands such as `console` can be used.
 
 .. and your message should appear.
 
-|||info
+>Note: There is a second undefined because `console.info()` doesn't return a value. This has no impact in this situation.
 
-Note: There is a second undefined because `console.info()` doesn't return a value. This has no impact in this situation.
+# Running an Expression
+
+Node.js is Javascript so you write and run write expressions.
+
+In the terminal window enter the Node command line by typing:
+
+```
+node
+```
+
+The ```>``` prompt should indicate you are in the Node Command Prompt.
+
+Now add:
+
+```
+for(var i=0; i<11; i++){
+  console.info(i); 
+}
+```
+Hit enter to see Javascript count through the loop.
+
+Node.js will automatically recognised that the statement isn't finished when you type enter after line one.
+
+Notice you are still in the Node process using `Ctrl>C` or `.exit` to exit to the Terminal prompt.
+
+# Build and Run Files
+
+To run a file create a file with a JS file extension such as:
+
+```
+console.log("Hello World");
+```
+
+Save the above as <em>hello.js</em> and then call the file via:
+
+```
+node hello.js
+```
+
+No need to use the Node prompt.  Alternatively you can drop the .js file extension and use:
+
+```
+node hello
+```
 
