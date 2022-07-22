@@ -1,15 +1,15 @@
 # Check Node is Running
 
-This Codio Project is already set up with NodeJS running.  To test Node open a New Terminal and type the following:
+This Codio Project is already set up with NodeJS running. To test Node open a New Terminal and type the following:
 
-``` 
-node -v 
+```
+node -v
 ```
 
 The current version of NodeJS installed should then appear eg:
 
 ```
-v10.21.0
+v16.15.0
 ```
 
 # Node Command Prompt
@@ -20,9 +20,9 @@ In the terminal window enter the Node command line by typing:
 node
 ```
 
-The ```>``` prompt should indicate you are in the Node Command Prompt.
+The `>` prompt should indicate you are in the Node Command Prompt.
 
-Once in the Node command line Javascript commands such as `console` can be used.  `console` is allows messages to output and is useful for basic debugging.  Make sure you are still in the Node Command Prompt and type:
+Once in the Node command line Javascript commands such as `console` can be used. `console` is allows messages to output and is useful for basic debugging. Make sure you are still in the Node Command Prompt and type:
 
 ```
 >console.info('Hello command line')
@@ -42,15 +42,16 @@ In the terminal window enter the Node command line by typing:
 node
 ```
 
-The ```>``` prompt should indicate you are in the Node Command Prompt.
+The `>` prompt should indicate you are in the Node Command Prompt.
 
 Now add:
 
 ```
 for(var i=0; i<11; i++){
-  console.info(i); 
+  console.info(i);
 }
 ```
+
 Hit enter to see Javascript count through the loop.
 
 Node.js will automatically recognised that the statement isn't finished when you type enter after line one.
@@ -71,11 +72,12 @@ Save the above as <em>hello.js</em> and then call the file via:
 node hello.js
 ```
 
-No need to use the Node prompt.  Alternatively you can drop the .js file extension and use:
+No need to use the Node prompt. Alternatively you can drop the .js file extension and use:
 
 ```
 node hello
 ```
+
 # The Scope of the Global Object
 
 In Client Side Javascript we are used to working with the DOM and the window object. In Node there is no window but we do have a Global Object. The console call in the previous example could have been written in long hand as:
@@ -87,7 +89,7 @@ global.console.log("Hello World");
 When variables are created in a file they belong to the scope of the file (or module) not the global scope. Try:
 
 ```
-var myVar = "Hi"; 
+var myVar = "Hi";
 console.log(global.myVar);
 // undefined
 console.log(myVar);
@@ -122,8 +124,6 @@ The first value of the array will be the execPath of the process, the second the
 
 User input can also be prompted with process.stdin and outputs written with process.stdout.
 
-
-
 ```
 process.stdout.write("Pounds: ");
 process.stdin.on('data', function(data){
@@ -149,11 +149,11 @@ var currentTime = 0;
 var waitInterval = 1000;
 var repeatInterval = 500;
 console.log("Wait for it");
-var myIntVal = setInterval(function(){ 
+var myIntVal = setInterval(function(){
   currentTime += waitInterval;
   console.log(`waiting ${currentTime/1000} seconds ....`);
-  }, repeatInterval); 
-setTimeout(function(){ 
+  }, repeatInterval);
+setTimeout(function(){
    clearInterval(myIntVal);
    console.log("Over and Out");
    }, endTime);
@@ -189,10 +189,10 @@ This file now exports a module.
 With multiple methods this can also be written as:
 
 ```
-module.exports = { 
-  eatCheese : function(){ 
-    console.log('hmmmmm'); }, 
-  eatCrisps : function() { 
+module.exports = {
+  eatCheese : function(){
+    console.log('hmmmmm'); },
+  eatCrisps : function() {
     console.log('Naughty');
   }
 }
@@ -218,7 +218,7 @@ console.info(myTime);
 Outputs a console value. Change this to return a value by making this a function.
 
 ```
-var getTheTime = function(){ 
+var getTheTime = function(){
   var myDate = new Date();
   var myTime = myDate.toTimeString();
   return(myTime);
@@ -228,9 +228,9 @@ var getTheTime = function(){
 We need to export this, so it can be used elsewhere amend it as follows:
 
 ```
-exports.getTheTime = function(){ 
-  var myDate = new Date(); 
-  var myTime = myDate.toTimeString(); 
+exports.getTheTime = function(){
+  var myDate = new Date();
+  var myTime = myDate.toTimeString();
   return(myTime);
 }
 ```
@@ -248,7 +248,7 @@ A module may export more than one method. Amend <em>timeStuff.js</em> to include
 
 ```
 var getTheDay = function(){
-  var myDate = new Date(); 
+  var myDate = new Date();
   var myDay = myDate.toDateString();
   return(myDay);
 }
@@ -259,6 +259,7 @@ This new method can then be used in <em>usingTime.js</em>. with:
 ```
 timeHelper.getTheDay();
 ```
+
 # The Path Module
 
 The previous examples were custom modules created by you the developer. Node has many built-in modules. They are required in the same way. The Path module provides utilities for working with file and directory paths.
@@ -268,7 +269,7 @@ var path = require("path");
 console.log(path.basename(__filename));
 ```
 
-The file system can be interogated and files/directories created via the ```fs``` core module.
+The file system can be interogated and files/directories created via the `fs` core module.
 
 To use the file system methods require it with:
 
@@ -285,9 +286,9 @@ With a target file of <em>stuff.json</em>:
 Create file to add to the JSON data with:
 
 ```
-var fs = require('fs'); 
-var path = require('path'); 
-var existing = fs.readFileSync("./stuff.json", "UTF-8"); 
+var fs = require('fs');
+var path = require('path');
+var existing = fs.readFileSync("./stuff.json", "UTF-8");
 var returnData = JSON.parse(existing);
 var newData = {"name":"Jon","job":"Driver"}; returnData.staff.push(newData);
 fs.writeFile("./stuff.json", JSON.stringify(returnData), function(){
@@ -306,13 +307,13 @@ As such we could do:
 
 ```
 var http = require("http");
-var options = { 
-  hostname : "www.ywonline.co.uk", 
-  port : 80, 
-  path :"/web/newincid.nsf/incidentsjson", 
+var options = {
+  hostname : "www.ywonline.co.uk",
+  port : 80,
+  path :"/web/newincid.nsf/incidentsjson",
   method : "GET"
 }
-var req = http.request(options, function(res){ 
+var req = http.request(options, function(res){
     // do something
 })
 ```
@@ -322,7 +323,7 @@ This makes a call to an endpoint to retrieve a JSON file. The call back function
 ```
 var req = http.request(options, function(res){
   console.log(`Server ${res.statusCode}`);
-     var myData = ""; res.on("data", function(chunk){ 
+     var myData = ""; res.on("data", function(chunk){
      console.log(chunk); myData+= chunk; })
      res.on('end', function(){
         console.info(myData);
@@ -333,7 +334,7 @@ var req = http.request(options, function(res){
 To handle errors add an error event.
 
 ```
-req.on("error", function(err){ 
+req.on("error", function(err){
   console.info(`Error: ${err.message}`)
 })
 ```
@@ -353,8 +354,8 @@ var fs = require("fs");
 Amend the 'end' event by adding:
 
 ```
-fs.writeFile("latest.json", myData, function(err){ 
-  if(err){ 
+fs.writeFile("latest.json", myData, function(err){
+  if(err){
   console.info(err.message);
   }else{
   console.info("File Written")
@@ -380,7 +381,7 @@ The `writeHead()` method of the response object can be used to write the http he
 
 The first parameter in the `writeHead()` method is the code for the http response - when successful you'd want this to be a 200.
 
-> The 200 here is a http response code.  You'll be most familar  with the 404 'File Not Found' response code.
+> The 200 here is a http response code. You'll be most familar with the 404 'File Not Found' response code.
 
 The second parameter for `writeHead()` method is a list of options related to the header such as the content type.
 
@@ -426,9 +427,9 @@ To write HTML change the response type to HTML as follows:
 
 ```
 var http = require("http");
-var server = http.createServer(function(req, res){ 
+var server = http.createServer(function(req, res){
   res.writeHead(200, {"Content-Type":"text/html"});
-  res.write(` <html> <body> <h1>Hello Node</h1> </body> </html> `); 
+  res.write(` <html> <body> <h1>Hello Node</h1> </body> </html> `);
   res.end();
 });
 server.listen(3000);
@@ -487,8 +488,4 @@ server.listen(3000);
 console.log("Server running on Port 3000");
 ```
 
-Test the above by calling `siteaddress/hello` and `siteaddress/goodbye`.  What happens when you try `siteaddress/test`?
-
-
-
-
+Test the above by calling `siteaddress/hello` and `siteaddress/goodbye`. What happens when you try `siteaddress/test`?
