@@ -438,7 +438,7 @@ console.log("Server running on Port 3000");
 
 Restart the server file and revisit in the browser. Looking in the source code and you'll see the HTML outlined above.
 
-#The Request Object
+# The Request Object
 
 We could also output some information about the request. Add the following to the
 
