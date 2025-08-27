@@ -1,26 +1,32 @@
-var http = require("http");
-var options = { 
-  hostname : "environment.data.gov.uk", 
-  port : 443, 
-  path :"flood-monitoring/id/floods", 
-  method : "GET"
-}
-// var options = { 
-//   hostname : "www.ywonline.co.uk", 
-//   port : 80, 
-//   path :"/web/newincid.nsf/incidentsjson", 
-//   method : "GET"
-// }
-var req = http.request(options, function(res){
-      console.log(`Server ${res.statusCode}`);
-     var myData = ""; res.on("data", function(chunk){ 
-     console.log(chunk); myData+= chunk; })
-     res.on('end', function(){
-        console.info(myData);
-     })
-})
+const https = require("https");
 
-req.on('error', function(err) {
-    // Handle error
-  console.dir(err);
+const options = {
+  hostname: "mustbebuilt.co.uk",
+  port: 443,
+  path: "/SHU/films-api/basic-api",
+  method: "GET",
+  headers: {
+    "User-Agent": "Node.js Demo Client",
+    // Accept: "application/json",
+    Accept: "*/*",
+  },
+};
+
+const req = https.request(options, (res) => {
+  console.log(`Status: ${res.statusCode}`);
+  let data = "";
+
+  res.on("data", (chunk) => {
+    data += chunk;
+  });
+
+  res.on("end", () => {
+    console.log("Response:", data);
+  });
 });
+
+req.on("error", (err) => {
+  console.error("Request error:", err);
+});
+
+req.end();

@@ -9,7 +9,7 @@ node -v
 The current version of NodeJS installed should then appear eg:
 
 ```
-v16.15.0
+v20.11.1
 ```
 
 # Node Command Prompt
@@ -489,3 +489,100 @@ console.log("Server running on Port 3000");
 ```
 
 Test the above by calling `siteaddress/hello` and `siteaddress/goodbye`. What happens when you try `siteaddress/test`?
+
+## Calling an API
+
+### 1. Import the `https` module
+
+```js
+const https = require("https");
+```
+
+Node.js has a built-in module (`https`) that lets you make secure HTTP requests (over TLS/SSL).
+
+---
+
+### 2. Define request options
+
+```js
+const options = {
+  hostname: "mustbebuilt.co.uk",
+  port: 443,
+  path: "/SHU/films-api/basic-api",
+  method: "GET",
+  headers: {
+    "User-Agent": "Node.js Demo Client",
+    Accept: "*/*",
+  },
+};
+```
+
+* `hostname`: The server domain.
+* `port`: `443` means HTTPS (secure).
+* `path`: The endpoint you want to call on that server.
+* `method`: HTTP method (`GET` here).
+* `headers`: Extra info sent to the server. A `User-Agent` is included so the server doesn’t reject the request, and `Accept: "*/*"` means “I’ll accept any content type in response.”
+
+---
+
+### 3. Create and send the request
+
+```js
+const req = https.request(options, (res) => {
+```
+
+* `https.request()` starts the request using the options above.
+* The callback `(res)` runs when the server sends back a response.
+
+---
+
+### 4. Handle the server response
+
+```js
+console.log(`Status: ${res.statusCode}`);
+let data = "";
+
+res.on("data", (chunk) => {
+  data += chunk;
+});
+
+res.on("end", () => {
+  console.log("Response:", data);
+});
+```
+
+* Logs the **status code** (e.g., `200` OK, `404` Not Found).
+* Collects the response body in pieces (`data` events deliver raw chunks of data).
+* When the response ends (`end` event), it logs the full body as a string.
+
+---
+
+### 5. Handle errors
+
+```js
+req.on("error", (err) => {
+  console.error("Request error:", err);
+});
+```
+
+If something goes wrong (e.g., DNS lookup fails, connection reset), this logs the error instead of crashing.
+
+---
+
+### 6. Finalize the request
+
+```js
+req.end();
+```
+
+Since this is a GET request with no body, you just call `.end()` to say “I’m done, send it.”
+
+---
+
+✅ **Summary**:
+This script makes a secure HTTP GET request to `https://mustbebuilt.co.uk/SHU/films-api/basic-api`, adds headers so the server accepts the request, listens for the response data, and prints the final result (or any errors). It’s a bare-bones API client using Node’s built-in `https` module.
+
+---
+
+Would you like me to also show you a simpler version using `https.get()` (which skips `.end()` and some boilerplate)?
+
