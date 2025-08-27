@@ -490,7 +490,7 @@ console.log("Server running on Port 3000");
 
 Test the above by calling `siteaddress/hello` and `siteaddress/goodbye`. What happens when you try `siteaddress/test`?
 
-## Calling an API
+# Calling an API
 
 ### 1. Import the `https` module
 
